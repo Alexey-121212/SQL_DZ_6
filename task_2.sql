@@ -1,0 +1,19 @@
+DROP PROCEDURE IF EXISTS CALC_EVEN;
+DELIMITER $$
+CREATE PROCEDURE CALC_EVEN(num INT)
+BEGIN
+	DECLARE res VARCHAR(200) DEFAULT '';
+  DECLARE i INT DEFAULT 2;    
+  WHILE i <= num DO
+    IF i = 2 THEN
+      SET res = CONCAT(i);
+    ELSE
+     	SET res = CONCAT(res, ', ', i);
+    END IF;
+  	SET i = i + 2;
+  END WHILE;
+  SELECT res;
+END $$ -- //
+DELIMITER ;
+
+CALL CALC_EVEN(10);
